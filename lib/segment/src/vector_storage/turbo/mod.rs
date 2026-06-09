@@ -61,12 +61,6 @@ pub struct TurboVectorStorage {
 }
 
 impl TurboVectorStorage {
-    /// Bytes used by all available (non-deleted) vectors in their encoded form.
-    pub fn size_of_available_vectors_in_bytes(&self) -> usize {
-        // TODO: available_vector_count() * quantizer.quantized_size().
-        unimplemented!("TODO: encoded size of available vectors")
-    }
-
     /// Memory layout of a single encoded vector.
     pub fn quantized_vector_layout(&self) -> OperationResult<Layout> {
         // TODO: build from quantized_vector_size() with the encoding alignment.
@@ -100,6 +94,11 @@ impl TurboVectorStorage {
 }
 
 impl VectorStorageRead for TurboVectorStorage {
+    fn size_of_available_vectors_in_bytes(&self) -> usize {
+        // TODO: available_vector_count() * quantizer.quantized_size().
+        unimplemented!("TODO: encoded size of available vectors")
+    }
+
     fn distance(&self) -> Distance {
         self.distance
     }
